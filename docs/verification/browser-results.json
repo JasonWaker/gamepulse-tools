@@ -1,0 +1,32 @@
+{
+  "widths": [
+    390,
+    430,
+    768,
+    1024,
+    1440
+  ],
+  "consoleErrors": [],
+  "linksChecked": 15,
+  "accessibility": [
+    {
+      "path": "/",
+      "violations": []
+    },
+    {
+      "path": "/games/wardogs/tools/loadout-planner/",
+      "violations": []
+    },
+    {
+      "path": "/games/aniimo/tools/team-planner/",
+      "violations": []
+    }
+  ],
+  "tools": [
+    "Loadout: drawer, prices, overbudget, save/reload, share/restore, reset",
+    "Comparator: both stat inputs and verified arithmetic, missing values withheld",
+    "Team: four slots, duplicate/full guards, removal and empty search",
+    "Progress: real-time sliders, average and least-complete goal",
+    "Pass: observed-rate calculation and boost savings"
+  ]
+}

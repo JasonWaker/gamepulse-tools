@@ -1,0 +1,41 @@
+{
+  "name": "gamepulse-tools",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test tests/*.test.ts",
+    "preview": "serve out -l 3100",
+    "release": "node scripts/release.mjs",
+    "admin:media": "node scripts/media-admin.mjs",
+    "test:browser": "node scripts/browser-check.mjs",
+    "data:seed": "tsx scripts/export-seed.ts",
+    "format": "prettier --write src scripts tests",
+    "audit:export": "node scripts/audit-export.mjs"
+  },
+  "dependencies": {
+    "lucide-react": "^0.577.0",
+    "next": "16.3.4",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@electric-sql/pglite": "^0.5.8",
+    "@playwright/test": "^1.58.0",
+    "@tailwindcss/postcss": "^4.0.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "16.3.4",
+    "prettier": "^3.9.6",
+    "serve": "^14.2.0",
+    "tailwindcss": "^4.0.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.3"
+  }
+}
