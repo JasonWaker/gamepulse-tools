@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.1 — 2026-09-07
+
+- Remove the entire sidebar toolkit-update card, including promotional copy, version number and release link. Tool behavior is unchanged.
+
 ## 0.3.0 — 2026-09-07
 
 - Add budget recommendations that preserve occupied slots, reserve full rebuys, honor item locks, and filter by category, primary range and vehicle seats. Preview changes, apply a fitting kit, inspect cheaper replacements and undo.

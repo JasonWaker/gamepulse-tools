@@ -161,14 +161,6 @@ export function SiteHeader() {
           ))}
         </nav>
         <div className="sidebar-bottom">
-          <div className="release-note">
-            <span className="pulse-dot" /> THE TOOLKIT UPDATE
-            <strong>Less setup. More playing.</strong>
-            <span>Budget recommendations & lower-price swaps.</span>
-            <a href={`${siteConfig.github}/releases`}>
-              What’s new in v{siteConfig.version} ↗
-            </a>
-          </div>
           <Link href="/about">
             <Info size={15} /> About & sources
           </Link>
