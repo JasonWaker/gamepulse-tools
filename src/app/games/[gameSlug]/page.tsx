@@ -1,3 +1,4 @@
+import { gameCodes } from "@/lib/codes";
 import { Catalog } from "@/components/player-tools";
 import Link from "next/link";
 import { ArrowUpRight, Database } from "lucide-react";
@@ -77,6 +78,12 @@ export default async function Page({
         </div>
       </section>
       <nav className="tool-dock" aria-label="Game navigation">
+        {gameCodes(g.id).length > 0 && (
+          <Link href={`/games/${g.slug}/codes`}>
+            Codes · Officially listed ↗
+          </Link>
+        )}
+        <Link href="/data-sources">Data coverage ↗</Link>
         {ts.map((t) => (
           <Link key={t.id} href={toolHref(t)}>
             {t.name}

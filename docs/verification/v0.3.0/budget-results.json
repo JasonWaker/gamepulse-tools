@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "flows": [
+    "reserve rebuys, preview, apply and undo",
+    "locked and impossible budgets",
+    "range and seats constraints",
+    "vehicle slot and six-slot share restoration",
+    "four official codes and exact clipboard copy",
+    "header version stays removed"
+  ],
+  "errors": []
+}

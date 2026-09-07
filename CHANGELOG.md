@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.0 — 2026-09-07
+
+- Add budget recommendations that preserve occupied slots, reserve full rebuys, honor item locks, and filter by category, primary range and vehicle seats. Preview changes, apply a fitting kit, inspect cheaper replacements and undo.
+- Expand WARDOGS from 7 to 13 weapons; add three sourced vehicles and a sixth loadout slot. Keep existing plans compatible and persist recommendation preferences in shared/saved plans.
+- Publish four officially listed Agartha codes with reward text, source dates, copy controls and explicit untested-redemption status.
+- Add data coverage pages and an on-demand source checker with factual diffs, review candidates and a manual GitHub Actions workflow. No silent catalog updates or live-data claims.
+- Keep the top-right version badge removed; preserve GitHub version history.
+
 Every published update gets a new semantic version, annotated Git tag and GitHub release.
 
 ## 0.2.1 — 2026-09-07

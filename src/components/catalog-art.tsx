@@ -1,6 +1,12 @@
 "use client";
 import { useState } from "react";
-import { Shield, BriefcaseMedical, HardHat } from "lucide-react";
+import {
+  Shield,
+  BriefcaseMedical,
+  HardHat,
+  Crosshair,
+  Car,
+} from "lucide-react";
 import type { Entity } from "@/lib/registry";
 import { media, canDisplay } from "@/lib/media";
 import { asset } from "@/lib/config";
@@ -61,6 +67,18 @@ export function EntityArt({ entity: e }: { entity: Entity }) {
         <span>Artwork unavailable</span>
       </div>
     );
+  if (e.entity_type === "weapons" && typeof e.data_json.art !== "number") {
+    return (
+      <div
+        className="item-art gear-art"
+        role="img"
+        aria-label={`${e.name}, category symbol; game artwork unavailable`}
+      >
+        <Crosshair size={65} strokeWidth={1} />
+        <span className="art-index">{e.data_json.category}</span>
+      </div>
+    );
+  }
   if (e.entity_type === "weapons") {
     const n = Number(e.data_json.art);
     return (
@@ -103,11 +121,13 @@ export function EntityArt({ entity: e }: { entity: Entity }) {
     );
   }
   const Icon =
-    e.data_json.slot === "Helmet"
-      ? HardHat
-      : e.data_json.slot === "Utility"
-        ? BriefcaseMedical
-        : Shield;
+    e.data_json.slot === "Vehicle"
+      ? Car
+      : e.data_json.slot === "Helmet"
+        ? HardHat
+        : e.data_json.slot === "Utility"
+          ? BriefcaseMedical
+          : Shield;
   return (
     <div className="item-art gear-art">
       <Icon size={65} strokeWidth={1} />

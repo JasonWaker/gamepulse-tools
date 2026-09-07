@@ -1,4 +1,4 @@
-> **Current release: v0.2.1.** The image-based workspace, sourced catalog, click-to-equip builders, comparison charts and saved toolkit replace the v0.1 interface. See [v0.2 media/data notes](docs/MEDIA-v0.2.md) and [release verification](docs/verification/v0.2.0/browser-results.json).
+> **Current release: v0.3.0.** The image-based workspace, sourced catalog, click-to-equip builders, comparison charts and saved toolkit replace the v0.1 interface. See [v0.2 media/data notes](docs/MEDIA-v0.2.md) and [release verification](docs/verification/v0.2.0/browser-results.json).
 
 # GamePulse Tools · v0.1.0
 
@@ -148,3 +148,9 @@ No account system, payments, ads, radar backend or generated guide farm. Ad posi
 Browser results and screenshots are in `docs/verification`. Local timings are not field Core Web Vitals; measure LCP on the live host with real mobile conditions after traffic arrives. Initial JavaScript includes the Next.js framework; optional workbench code is deferred from discovery pages.
 
 Next priorities: verify official weapon prices/stats and pass formulas, expand sourced creature records and type rules, connect a dedicated Supabase project, obtain explicit media licenses, and measure actual tool completion/return usage before adding more games.
+
+## v0.3.0 budget decisions
+
+WARDOGS: 13 sourced weapons, 3 gear records and 3 vehicles. The planner now has six slots, reserve-rebuy recommendations, item locks, range/seat preferences, same-category filtering, price trade-offs and undo. Preferences travel with saved/shared plans. Agartha has four officially listed codes with copy buttons and no redemption guarantee.
+
+Run `npm run data:check` to create source-review candidates; see [the review policy](docs/data/README.md). Public coverage and limitations are at `/data-sources/`. Source checking is on demand, not automatic publishing.

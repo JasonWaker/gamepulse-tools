@@ -11,11 +11,11 @@ const context = await browser.newContext({
 const page = await context.newPage();
 const errors = [];
 page.on("pageerror", (e) => errors.push(e.message));
-const dir = "docs/verification/v0.2.0";
+const dir = "docs/verification/v0.3.0";
 await mkdir(dir, { recursive: true });
 const results = { flows: [], responsive: [], accessibility: [], errors };
 const go = async (path) => {
-  const r = await page.goto(base + path);
+  const r = await page.goto(base + path, { waitUntil: "domcontentloaded" });
   assert.equal(r.status(), 200, path);
   await page.waitForLoadState("domcontentloaded");
   await page.locator(".site-header").waitFor();
@@ -159,6 +159,9 @@ const paths = [
   pass,
   "/games/wardogs/weapons/ak74/",
   "/library/",
+  "/data-sources/",
+  "/games/agartha-mog-or-die/codes/",
+  "/games/wardogs/vehicles/bobcat/",
 ];
 for (const width of [390, 768, 1024, 1440]) {
   await page.setViewportSize({ width, height: 900 });
@@ -192,14 +195,17 @@ for (const [name, path] of [
   ["compare", compare],
   ["team", team],
   ["progress", progress],
+  ["codes", "/games/agartha-mog-or-die/codes/"],
+  ["sources", "/data-sources/"],
 ]) {
   await go(path);
   if (name === "loadout")
     await page.getByRole("button", { name: "Field essentials" }).click();
   await page.evaluate(async () => {
-    await Promise.all(
-      [...document.images].map((i) => i.decode().catch(() => {})),
-    );
+    await Promise.race([
+      Promise.all([...document.images].map((i) => i.decode().catch(() => {}))),
+      new Promise((r) => setTimeout(r, 5000)),
+    ]);
   });
   await page.screenshot({
     path: dir + "/" + name + "-desktop.png",

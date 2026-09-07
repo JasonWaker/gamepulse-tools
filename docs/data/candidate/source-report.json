@@ -1,0 +1,241 @@
+{
+  "checked_at": "2026-09-07T04:00:40.423993+00:00",
+  "mode": "candidate only; manual review required",
+  "records": [
+    {
+      "id": "wd-ak74",
+      "source_url": "https://wardogshq.gg/weapons/ak74/",
+      "observed": {
+        "price": 1600.0,
+        "damage": 26.0,
+        "rpm": 650.0,
+        "range": 500.0,
+        "velocity": 880.0,
+        "accuracy": 0.825,
+        "ammo_price": 15.0
+      },
+      "changes": {},
+      "facts_sha256": "c1fa45195e757b303f6d9c31ef81c254fe82f39be7adfff48d64701ee88edbc5"
+    },
+    {
+      "id": "wd-amp-9",
+      "source_url": "https://wardogshq.gg/weapons/amp-9/",
+      "observed": {
+        "price": 900.0,
+        "damage": 22.0,
+        "rpm": 900.0,
+        "range": 100.0,
+        "velocity": 400.0,
+        "accuracy": 2.1,
+        "ammo_price": 10.0
+      },
+      "changes": {},
+      "facts_sha256": "46f222802bb42908e63b5e0546e6b5f6697945e9bdca4bd7521bcb3dba6caac6"
+    },
+    {
+      "id": "wd-bobcat",
+      "source_url": "https://wardogshq.gg/vehicles/bobcat/",
+      "observed": {
+        "price": 500.0,
+        "seats": 2.0
+      },
+      "changes": {},
+      "facts_sha256": "5d8a97a1e5a4378724dbdf1bfd1f0de648ae2ed913320ae39f446845a8173740"
+    },
+    {
+      "id": "wd-bushmaster-m17s",
+      "source_url": "https://wardogshq.gg/weapons/bushmaster-m17s/",
+      "observed": {
+        "price": 0.0,
+        "damage": 28.0,
+        "rpm": 700.0,
+        "range": 300.0,
+        "velocity": 715.0,
+        "accuracy": 1.5,
+        "ammo_price": 15.0
+      },
+      "changes": {},
+      "facts_sha256": "81ee256b2cc00163655def9323c4ba8d2954d51ededbb50b7c72b0dec71705dc"
+    },
+    {
+      "id": "wd-dune-buggy",
+      "source_url": "https://wardogshq.gg/vehicles/dune-buggy/",
+      "observed": {
+        "price": 1500.0,
+        "seats": 3.0
+      },
+      "changes": {},
+      "facts_sha256": "ff8606b6b5675bf1c3c1593b1ecb89bf227a866bf32b8948759b8a1d191bec45"
+    },
+    {
+      "id": "wd-galil",
+      "source_url": "https://wardogshq.gg/weapons/galil/",
+      "observed": {
+        "price": 2200.0,
+        "damage": 28.0,
+        "rpm": 650.0,
+        "range": 400.0,
+        "velocity": 950.0,
+        "accuracy": 0.73,
+        "ammo_price": 15.0
+      },
+      "changes": {},
+      "facts_sha256": "9da564f7f3fb1cd9ef56dee038d0fba59adad4071e05449aa895d2e3d235e417"
+    },
+    {
+      "id": "wd-ggx-17",
+      "source_url": "https://wardogshq.gg/weapons/ggx-17/",
+      "observed": {
+        "price": 200.0,
+        "damage": 22.0,
+        "rpm": 600.0,
+        "range": 50.0,
+        "velocity": 375.0,
+        "accuracy": 3.49,
+        "ammo_price": 10.0
+      },
+      "changes": {},
+      "facts_sha256": "ec757ea4eafdba945d891284f5593b88b8a555ee3bc4b6b80e9074a82f80262a"
+    },
+    {
+      "id": "wd-kodiak",
+      "source_url": "https://wardogshq.gg/vehicles/kodiak/",
+      "observed": {
+        "price": 2500.0,
+        "seats": 4.0
+      },
+      "changes": {},
+      "facts_sha256": "43e6789355732ee641593d49a6959b170c36ba91f64ffb55a6dc4295c7347354"
+    },
+    {
+      "id": "wd-m1911",
+      "source_url": "https://wardogshq.gg/weapons/m1911/",
+      "observed": {
+        "price": 300.0,
+        "damage": 30.0,
+        "rpm": 430.0,
+        "range": 50.0,
+        "velocity": 253.0,
+        "accuracy": 2.0,
+        "ammo_price": 10.0
+      },
+      "changes": {},
+      "facts_sha256": "8196cdea0384521f9e3ac8e22bdbaa693085f0fd846fbab5282c83b20330bb10"
+    },
+    {
+      "id": "wd-m249-saw",
+      "source_url": "https://wardogshq.gg/weapons/m249-saw/",
+      "observed": {
+        "price": 3200.0,
+        "damage": 28.0,
+        "rpm": 850.0,
+        "range": 700.0,
+        "velocity": 915.0,
+        "accuracy": 4.3,
+        "ammo_price": 15.0
+      },
+      "changes": {},
+      "facts_sha256": "42e9e372de4ddf79ae01322973fd7e9b8cb4a17e2c65c7b0279687f14e75e1ef"
+    },
+    {
+      "id": "wd-m4",
+      "source_url": "https://wardogshq.gg/weapons/m4/",
+      "observed": {
+        "price": 2800.0,
+        "damage": 28.0,
+        "rpm": 800.0,
+        "range": 500.0,
+        "velocity": 910.0,
+        "accuracy": 0.84,
+        "ammo_price": 15.0
+      },
+      "changes": {},
+      "facts_sha256": "d793b2175e10c8cbd6ab581bbe510fa77f7aaf01e7d968a881f143b00a199344"
+    },
+    {
+      "id": "wd-mp5",
+      "source_url": "https://wardogshq.gg/weapons/mp5/",
+      "observed": {
+        "price": 1500.0,
+        "damage": 22.0,
+        "rpm": 800.0,
+        "range": 200.0,
+        "velocity": 400.0,
+        "accuracy": 1.16,
+        "ammo_price": 10.0
+      },
+      "changes": {},
+      "facts_sha256": "b7820680065dfabff976d181d594932aa649ee48e89d17e9003253a819e6cc21"
+    },
+    {
+      "id": "wd-pkm",
+      "source_url": "https://wardogshq.gg/weapons/pkm/",
+      "observed": {
+        "price": 4500.0,
+        "damage": 55.0,
+        "rpm": 600.0,
+        "range": 1000.0,
+        "velocity": 825.0,
+        "accuracy": 2.5,
+        "ammo_price": 30.0
+      },
+      "changes": {},
+      "facts_sha256": "e0486b101072159aae9a40135c956efb06da5af868706a9dff9f4215cebc8d76"
+    },
+    {
+      "id": "wd-sks",
+      "source_url": "https://wardogshq.gg/weapons/sks/",
+      "observed": {
+        "price": 2400.0,
+        "damage": 42.0,
+        "rpm": 420.0,
+        "range": 400.0,
+        "velocity": 735.0,
+        "accuracy": 0.73,
+        "ammo_price": 40.0
+      },
+      "changes": {},
+      "facts_sha256": "47844d41a7ea6e341201fc7c83f60752af07390da0d3f7a9b0b52a7b71875abe"
+    },
+    {
+      "id": "wd-svd",
+      "source_url": "https://wardogshq.gg/weapons/svd/",
+      "observed": {
+        "price": 4800.0,
+        "damage": 55.0,
+        "rpm": 480.0,
+        "range": 800.0,
+        "velocity": 800.0,
+        "accuracy": 0.45,
+        "ammo_price": 30.0
+      },
+      "changes": {},
+      "facts_sha256": "8667d9edcd5f3fca4c697c235bfc57f44eee93fb4de99bff35330a4f7f2350de"
+    },
+    {
+      "id": "wd-t-21",
+      "source_url": "https://wardogshq.gg/weapons/t-21/",
+      "observed": {
+        "price": 600.0,
+        "damage": 28.0,
+        "rpm": 750.0,
+        "range": 550.0,
+        "velocity": 910.0,
+        "accuracy": 0.87,
+        "ammo_price": 15.0
+      },
+      "changes": {},
+      "facts_sha256": "776d2e7d45b731cd84318c76bc49cd9bcf8dfbbd61b642404958b9a7c98bc5f8"
+    }
+  ],
+  "errors": [],
+  "code_sources": [
+    {
+      "game_id": "agartha-mog-or-die",
+      "source_url": "https://games.roblox.com/v1/games?universeIds=10571722689",
+      "experience_updated_at": "2026-09-02T10:52:51.764Z",
+      "codes_observed": 4
+    }
+  ],
+  "code_changes": []
+}

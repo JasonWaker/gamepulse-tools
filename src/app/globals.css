@@ -5367,3 +5367,221 @@ main {
 .side-spotlight {
   background: linear-gradient(140deg, #233d39, #101921);
 }
+
+/* Budget decisions and source-backed code cards */
+.budget-advisor {
+  scroll-margin-top: 100px;
+  margin-top: 40px;
+  padding: 30px;
+  border: 1px solid #384437;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #18201b, #11161c 60%);
+}
+.advisor-intro {
+  max-width: 720px;
+}
+.advisor-intro h2 {
+  font-size: clamp(27px, 3vw, 40px);
+  margin: 12px 0;
+}
+.advisor-intro .overline {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.advisor-controls {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+.advisor-controls label {
+  font-size: 12px;
+  color: #bdc5cc;
+  display: grid;
+  gap: 9px;
+}
+.advisor-controls input,
+.advisor-controls select {
+  width: 100%;
+  min-width: 0;
+  background: #090d11;
+  border: 1px solid #39434c;
+  border-radius: 6px;
+  padding: 12px;
+  color: #edf0f2;
+  font: inherit;
+}
+.lock-list {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 18px 0;
+}
+.lock-list button {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid #46515b;
+  background: #171e25;
+  color: #c3cbd1;
+  border-radius: 20px;
+  padding: 9px 13px;
+}
+.lock-list button.active {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.advisor-result {
+  background: #0c1116;
+  border: 1px solid #35403b;
+  border-radius: 10px;
+  padding: 24px;
+  margin: 24px 0;
+}
+.advisor-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.advisor-metrics small {
+  display: block;
+  color: #9caab5;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+.advisor-metrics strong {
+  display: block;
+  font-size: 28px;
+  margin-top: 8px;
+}
+.swap-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #283139;
+}
+.swap-row small {
+  color: #9caab5;
+  margin-left: auto;
+}
+.advisor-result > .button {
+  margin-top: 20px;
+}
+.alternative-group {
+  border-top: 1px solid #303a43;
+  padding: 12px 0;
+}
+.alternative-group h4 {
+  margin: 12px 0;
+}
+.alternative-group h4 small {
+  color: #a7b3bc;
+  font-weight: 400;
+  margin-left: 10px;
+}
+.alternative-row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 12px 0;
+}
+.alternative-row > div {
+  flex: 1;
+}
+.alternative-row small {
+  display: block;
+  color: #a7b3bc;
+  margin-top: 6px;
+  font-size: 12px;
+}
+.alternative-row > b {
+  font-size: 13px;
+  white-space: nowrap;
+}
+.alternative-row .button {
+  min-height: 36px;
+  padding: 8px 13px;
+  font-size: 12px;
+}
+.source-summary {
+  margin: 24px 0;
+  padding: 18px 22px;
+  border: 1px solid #35414a;
+  border-left: 3px solid var(--accent);
+  border-radius: 8px;
+  background: #12191f;
+}
+.source-summary p {
+  margin: 8px 0;
+  font-size: 13px;
+}
+.source-summary a {
+  color: var(--accent);
+}
+.code-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin: 24px 0;
+}
+.code-card {
+  border: 1px solid #344338;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #18231b, #12181c);
+  padding: 24px;
+}
+.code-card code {
+  font-size: 22px;
+  color: var(--accent);
+  overflow-wrap: anywhere;
+}
+.code-card p {
+  min-height: 48px;
+}
+.code-card small {
+  display: block;
+  color: #a7b3bc;
+  margin: 12px 0;
+}
+.code-card .button {
+  width: 100%;
+}
+@media (max-width: 1000px) {
+  .advisor-controls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 600px) {
+  .budget-advisor {
+    padding: 18px;
+  }
+  .advisor-controls,
+  .code-grid {
+    grid-template-columns: 1fr;
+  }
+  .advisor-result {
+    padding: 16px;
+  }
+  .advisor-metrics {
+    gap: 8px;
+  }
+  .advisor-metrics strong {
+    font-size: 20px;
+  }
+  .advisor-metrics small {
+    font-size: 9px;
+  }
+  .alternative-row {
+    flex-wrap: wrap;
+  }
+  .alternative-row > div {
+    flex-basis: 100%;
+  }
+  .swap-row small {
+    margin-left: 0;
+    flex-basis: 100%;
+  }
+}

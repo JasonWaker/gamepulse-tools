@@ -1,6 +1,6 @@
 {
   "name": "gamepulse-tools",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -14,7 +14,8 @@
     "test:browser": "node scripts/browser-check.mjs",
     "data:seed": "tsx scripts/export-seed.ts",
     "format": "prettier --write src scripts tests",
-    "audit:export": "node scripts/audit-export.mjs"
+    "audit:export": "node scripts/audit-export.mjs",
+    "data:check": "python3 scripts/check-sources.py"
   },
   "dependencies": {
     "lucide-react": "^0.577.0",

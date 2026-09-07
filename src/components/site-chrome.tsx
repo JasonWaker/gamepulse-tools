@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { siteConfig } from "@/lib/config";
 import { games, tools, entities, toolHref, gameTools } from "@/lib/registry";
+import { gameCodes } from "@/lib/codes";
 import { Cover } from "./catalog-art";
 export function SiteHeader() {
   const path = usePathname();
@@ -127,6 +128,14 @@ export function SiteHeader() {
               </Link>
               {path.includes("/" + g.slug) && (
                 <div className="nav-game-tools">
+                  {gameCodes(g.id).length > 0 && (
+                    <Link
+                      href={`/games/${g.slug}/codes`}
+                      onClick={() => setMenu(false)}
+                    >
+                      Codes · Officially listed
+                    </Link>
+                  )}
                   {gameTools(g.id).map((t) => (
                     <Link
                       key={t.id}
@@ -155,13 +164,16 @@ export function SiteHeader() {
           <div className="release-note">
             <span className="pulse-dot" /> THE TOOLKIT UPDATE
             <strong>Less setup. More playing.</strong>
-            <span>Equipment, presets & saved plans.</span>
+            <span>Budget recommendations & lower-price swaps.</span>
             <a href={`${siteConfig.github}/releases`}>
               What’s new in v{siteConfig.version} ↗
             </a>
           </div>
           <Link href="/about">
             <Info size={15} /> About & sources
+          </Link>
+          <Link href="/data-sources" onClick={() => setMenu(false)}>
+            Data coverage & updates
           </Link>
           <Link href="/privacy">Privacy policy</Link>
         </div>

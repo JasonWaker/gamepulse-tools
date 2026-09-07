@@ -34,9 +34,16 @@ import {
   kitCost,
   timeToKill,
 } from "@/lib/equipment";
+import { DataStatus } from "./data-status";
 import { EntityArt } from "./catalog-art";
 import { track } from "@/lib/analytics";
+import {
+  BudgetAdvisor,
+  budgetDefaults,
+  type BudgetPreferences,
+} from "./budget-advisor";
 type Plan = {
+  budgetPreferences: BudgetPreferences;
   ids: string[];
   ammo: Record<string, number>;
   budget: number;
@@ -55,6 +62,7 @@ type Plan = {
   };
 };
 const defaults: Plan = {
+  budgetPreferences: budgetDefaults,
   ids: presets[0].items,
   ammo: { "wd-ak74": 3, "wd-m1911": 2 },
   budget: 10000,
@@ -80,7 +88,7 @@ function cleanPlan(raw: unknown): Plan {
   const ids = valid(
     x.ids,
     equipment.map((e) => e.id),
-    5,
+    slots.length,
   ).filter(
     (id, i, all) =>
       all.findIndex(
@@ -96,6 +104,33 @@ function cleanPlan(raw: unknown): Plan {
       ammo[e.id] = Math.min(99, Math.max(0, Math.floor(n)));
   }
   return {
+    budgetPreferences: {
+      rebuys: Math.min(
+        10,
+        Math.max(
+          0,
+          Math.floor(
+            Number(x.budgetPreferences?.rebuys ?? budgetDefaults.rebuys) || 0,
+          ),
+        ),
+      ),
+      locked: valid(
+        x.budgetPreferences?.locked,
+        equipment.map((e) => e.id),
+        slots.length,
+      ),
+      sameClass: x.budgetPreferences?.sameClass !== false,
+      minRange: [0, 100, 200, 300, 500, 700].includes(
+        Number(x.budgetPreferences?.minRange),
+      )
+        ? Number(x.budgetPreferences?.minRange)
+        : 0,
+      minSeats: [1, 2, 3, 4].includes(Number(x.budgetPreferences?.minSeats))
+        ? Number(x.budgetPreferences?.minSeats)
+        : 1,
+      strategy:
+        x.budgetPreferences?.strategy === "cheapest" ? "cheapest" : "fewest",
+    },
     ids,
     ammo,
     budget:
@@ -442,10 +477,13 @@ export function PlayerWorkbench({ tool }: { tool: ToolDefinition }) {
               ),
               item.id,
             ],
-            compare: [
-              item.id,
-              ...p.compare.filter((id) => id !== item.id),
-            ].slice(0, 2),
+            compare:
+              item.entity_type === "weapons"
+                ? [item.id, ...p.compare.filter((id) => id !== item.id)].slice(
+                    0,
+                    2,
+                  )
+                : p.compare,
           };
           setSlot(String(item.data_json.slot));
         }
@@ -529,7 +567,7 @@ export function PlayerWorkbench({ tool }: { tool: ToolDefinition }) {
   const total = kitCost(plan.ids, plan.ammo, plan.discount),
     remaining = plan.budget - total;
   return (
-    <div className="player-workbench">
+    <div className="player-workbench" data-ready={ready}>
       <div className="workbench-actions">
         <label className="plan-name">
           <span>PLAN NAME</span>
@@ -568,6 +606,9 @@ export function PlayerWorkbench({ tool }: { tool: ToolDefinition }) {
       </div>
       {tool.tool_type === "loadout" && (
         <>
+          <DataStatus
+            records={equipment.filter((e) => e.game_id === tool.game_id)}
+          />
           <div className="preset-selector">
             <span>START WITH A BUILD</span>
             {presets.map((p) => (
@@ -612,7 +653,10 @@ export function PlayerWorkbench({ tool }: { tool: ToolDefinition }) {
               </div>
               <Catalog
                 key={slot}
-                records={equipment.filter((e) => e.data_json.slot === slot)}
+                records={equipment.filter(
+                  (e) =>
+                    e.game_id === tool.game_id && e.data_json.slot === slot,
+                )}
                 mode="pick"
                 selected={plan.ids}
                 onPick={equip}
@@ -673,6 +717,9 @@ export function PlayerWorkbench({ tool }: { tool: ToolDefinition }) {
                     ? `${Math.floor(remaining / total)} full rebuys after this deployment`
                     : "Select equipment to build your kit"}
               </p>
+              <a className="button secondary" href="#budget-advisor">
+                Find a cheaper kit ↘
+              </a>
               <div className="kit-items">
                 {slots.map((s) => {
                   const e = equipment.find(
@@ -771,6 +818,15 @@ export function PlayerWorkbench({ tool }: { tool: ToolDefinition }) {
               </p>
             </aside>
           </div>
+          <BudgetAdvisor
+            input={{ ...plan, ...plan.budgetPreferences }}
+            onPreferences={(value) =>
+              patch({
+                budgetPreferences: { ...plan.budgetPreferences, ...value },
+              })
+            }
+            onApply={(ids, ammo) => patch({ ids, ammo })}
+          />
         </>
       )}
       {(tool.tool_type === "progress" || tool.tool_type === "pass") && (

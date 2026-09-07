@@ -23,8 +23,8 @@ test("TTK counts intervals from the first hit and updates with target health", (
 });
 test("Published catalog is unique and factual values carry row-level provenance", () => {
   assert.equal(new Set(entities.map((e) => e.id)).size, entities.length);
-  assert.equal(equipment.length, 10);
-  assert.equal(weapons.length, 7);
+  assert.equal(equipment.length, 19);
+  assert.equal(weapons.length, 13);
   assert.equal(
     entities.filter((e) => e.entity_type === "creatures").length,
     24,

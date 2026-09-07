@@ -3,7 +3,14 @@ export const equipment = entities.filter(
   (e) => typeof e.data_json.price === "number",
 );
 export const weapons = equipment.filter((e) => e.entity_type === "weapons");
-export const slots = ["Primary", "Secondary", "Armor", "Helmet", "Utility"];
+export const slots = [
+  "Primary",
+  "Secondary",
+  "Armor",
+  "Helmet",
+  "Utility",
+  "Vehicle",
+];
 export const presets = [
   {
     id: "balanced",

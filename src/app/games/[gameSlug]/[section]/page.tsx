@@ -1,3 +1,6 @@
+import { CodeList } from "@/components/code-list";
+import { DataStatus } from "@/components/data-status";
+import { gameCodes } from "@/lib/codes";
 import { Catalog } from "@/components/player-tools";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -30,7 +33,12 @@ export async function generateMetadata({
   );
   return {
     title: `${getGame(gameSlug)?.name} ${section}`,
-    robots: { index: es.length > 0, follow: true },
+    robots: {
+      index:
+        es.length > 0 ||
+        (section === "codes" && gameCodes(gameSlug).length > 0),
+      follow: true,
+    },
     alternates: {
       canonical: `${siteConfig.url}/games/${gameSlug}/${section}/`,
     },
@@ -63,7 +71,7 @@ export default async function Page({
       </h1>
       <p className="lead">
         {section === "codes"
-          ? "Only verified, active codes belong here. No invented rewards."
+          ? "Codes published in the official game description, with rewards, source checks and one-click copying."
           : section === "guides"
             ? "Practical help, when there is enough verified information to be useful."
             : "Search, filter and bookmark sourced records. Pick an entry to inspect it or add it directly to your plan."}
@@ -77,7 +85,9 @@ export default async function Page({
           ))}
         </nav>
       )}
-      {es.length ? (
+      {section === "codes" && gameCodes(g.id).length > 0 ? (
+        <CodeList codes={gameCodes(g.id)} />
+      ) : es.length ? (
         <>
           <script
             type="application/ld+json"
@@ -94,6 +104,7 @@ export default async function Page({
               }),
             }}
           />
+          <DataStatus records={es} />
           <Catalog records={es} />
         </>
       ) : (

@@ -68,7 +68,7 @@ export const games: Game[] = [
     release_date: "2026-09-10",
     steam_app_id: 1867240,
     official_url: "https://bulkhead.com/games/wardogs/",
-    entityTypes: ["weapons", "equipment"],
+    entityTypes: ["weapons", "equipment", "vehicles"],
     trend_score: null,
     opportunity_score: null,
     growth_status: "Editorial watchlist",
@@ -162,10 +162,10 @@ export const tools: ToolDefinition[] = [
     short_description:
       "Build your kit. Balance your budget. Deploy with a plan.",
     status: "NEW",
-    version: "0.2.0",
+    version: "0.3.0",
     is_featured: true,
     config_json: {
-      slots: ["Primary weapon", "Secondary", "Utility", "Armor", "Vehicle"],
+      slots: ["Primary", "Secondary", "Armor", "Helmet", "Utility", "Vehicle"],
     },
     updated_at: "2026-09-07",
   },
@@ -178,7 +178,7 @@ export const tools: ToolDefinition[] = [
     short_description:
       "Compare your weapon stats side by side, before you commit.",
     status: "NEW",
-    version: "0.2.0",
+    version: "0.3.0",
     is_featured: true,
     config_json: {},
     updated_at: "2026-09-07",

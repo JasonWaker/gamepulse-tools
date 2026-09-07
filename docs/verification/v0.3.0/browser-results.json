@@ -1,0 +1,219 @@
+{
+  "flows": [
+    "Equipment selection, slot replacement, ammo, discount, overspend, persistence, named save and share restore",
+    "Search, bookmark, library favorites and database-to-loadout deep link",
+    "Three-way sourced weapon comparison and health-dependent TTK",
+    "Official elemental filtering, team add/remove, duplicate and capacity protection",
+    "Personal milestones, checkpoint history and saved session persistence",
+    "Observed-rate boost estimate, achieved target and zero-rate guard"
+  ],
+  "responsive": [
+    {
+      "width": 390,
+      "path": "/"
+    },
+    {
+      "width": 390,
+      "path": "/games/wardogs/tools/loadout-planner/"
+    },
+    {
+      "width": 390,
+      "path": "/games/wardogs/tools/weapon-comparator/"
+    },
+    {
+      "width": 390,
+      "path": "/games/aniimo/tools/team-planner/"
+    },
+    {
+      "width": 390,
+      "path": "/games/agartha-mog-or-die/tools/progress-planner/"
+    },
+    {
+      "width": 390,
+      "path": "/games/agartha-mog-or-die/tools/pass-calculator/"
+    },
+    {
+      "width": 390,
+      "path": "/games/wardogs/weapons/ak74/"
+    },
+    {
+      "width": 390,
+      "path": "/library/"
+    },
+    {
+      "width": 390,
+      "path": "/data-sources/"
+    },
+    {
+      "width": 390,
+      "path": "/games/agartha-mog-or-die/codes/"
+    },
+    {
+      "width": 390,
+      "path": "/games/wardogs/vehicles/bobcat/"
+    },
+    {
+      "width": 768,
+      "path": "/"
+    },
+    {
+      "width": 768,
+      "path": "/games/wardogs/tools/loadout-planner/"
+    },
+    {
+      "width": 768,
+      "path": "/games/wardogs/tools/weapon-comparator/"
+    },
+    {
+      "width": 768,
+      "path": "/games/aniimo/tools/team-planner/"
+    },
+    {
+      "width": 768,
+      "path": "/games/agartha-mog-or-die/tools/progress-planner/"
+    },
+    {
+      "width": 768,
+      "path": "/games/agartha-mog-or-die/tools/pass-calculator/"
+    },
+    {
+      "width": 768,
+      "path": "/games/wardogs/weapons/ak74/"
+    },
+    {
+      "width": 768,
+      "path": "/library/"
+    },
+    {
+      "width": 768,
+      "path": "/data-sources/"
+    },
+    {
+      "width": 768,
+      "path": "/games/agartha-mog-or-die/codes/"
+    },
+    {
+      "width": 768,
+      "path": "/games/wardogs/vehicles/bobcat/"
+    },
+    {
+      "width": 1024,
+      "path": "/"
+    },
+    {
+      "width": 1024,
+      "path": "/games/wardogs/tools/loadout-planner/"
+    },
+    {
+      "width": 1024,
+      "path": "/games/wardogs/tools/weapon-comparator/"
+    },
+    {
+      "width": 1024,
+      "path": "/games/aniimo/tools/team-planner/"
+    },
+    {
+      "width": 1024,
+      "path": "/games/agartha-mog-or-die/tools/progress-planner/"
+    },
+    {
+      "width": 1024,
+      "path": "/games/agartha-mog-or-die/tools/pass-calculator/"
+    },
+    {
+      "width": 1024,
+      "path": "/games/wardogs/weapons/ak74/"
+    },
+    {
+      "width": 1024,
+      "path": "/library/"
+    },
+    {
+      "width": 1024,
+      "path": "/data-sources/"
+    },
+    {
+      "width": 1024,
+      "path": "/games/agartha-mog-or-die/codes/"
+    },
+    {
+      "width": 1024,
+      "path": "/games/wardogs/vehicles/bobcat/"
+    },
+    {
+      "width": 1440,
+      "path": "/"
+    },
+    {
+      "width": 1440,
+      "path": "/games/wardogs/tools/loadout-planner/"
+    },
+    {
+      "width": 1440,
+      "path": "/games/wardogs/tools/weapon-comparator/"
+    },
+    {
+      "width": 1440,
+      "path": "/games/aniimo/tools/team-planner/"
+    },
+    {
+      "width": 1440,
+      "path": "/games/agartha-mog-or-die/tools/progress-planner/"
+    },
+    {
+      "width": 1440,
+      "path": "/games/agartha-mog-or-die/tools/pass-calculator/"
+    },
+    {
+      "width": 1440,
+      "path": "/games/wardogs/weapons/ak74/"
+    },
+    {
+      "width": 1440,
+      "path": "/library/"
+    },
+    {
+      "width": 1440,
+      "path": "/data-sources/"
+    },
+    {
+      "width": 1440,
+      "path": "/games/agartha-mog-or-die/codes/"
+    },
+    {
+      "width": 1440,
+      "path": "/games/wardogs/vehicles/bobcat/"
+    }
+  ],
+  "accessibility": [
+    {
+      "path": "/",
+      "violations": []
+    },
+    {
+      "path": "/games/wardogs/tools/loadout-planner/",
+      "violations": []
+    },
+    {
+      "path": "/games/wardogs/tools/weapon-comparator/",
+      "violations": []
+    },
+    {
+      "path": "/games/aniimo/tools/team-planner/",
+      "violations": []
+    },
+    {
+      "path": "/games/agartha-mog-or-die/tools/progress-planner/",
+      "violations": []
+    },
+    {
+      "path": "/games/agartha-mog-or-die/codes/",
+      "violations": []
+    },
+    {
+      "path": "/data-sources/",
+      "violations": []
+    }
+  ],
+  "errors": []
+}

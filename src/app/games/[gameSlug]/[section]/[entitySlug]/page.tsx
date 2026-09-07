@@ -44,6 +44,7 @@ export default async function Page({ params }: { params: Promise<Params> }) {
   if (!e || !g) notFound();
   const ts = gameTools(g.id);
   const labels: Record<string, string> = {
+    seats: "Recorded seats",
     category: "Category",
     slot: "Loadout slot",
     price: "Purchase price",
@@ -90,7 +91,10 @@ export default async function Page({ params }: { params: Promise<Params> }) {
               ↗
             </Link>
             {ts
-              .filter((t) => t.tool_type === "comparator")
+              .filter(
+                (t) =>
+                  t.tool_type === "comparator" && e.entity_type === "weapons",
+              )
               .map((t) => (
                 <Link
                   key={t.id}
