@@ -2,6 +2,11 @@
 
 Every published update gets a new semantic version, annotated Git tag and GitHub release.
 
+## 0.2.1 — 2026-09-07
+
+- Remove the top-right header version badge and its GitHub release link.
+- Keep release tracking in GitHub and the existing footer/update notes. Tool behavior and data are unchanged.
+
 ## 0.2.0 — 2026-09-07
 
 GamePulse Tools v0.2.0 replaces the abstract landing page and manual-entry planners with a game workspace built around images, sourced records, and connected tools.

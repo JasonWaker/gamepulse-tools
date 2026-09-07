@@ -1,4 +1,4 @@
-> **Current release: v0.2.0.** The image-based workspace, sourced catalog, click-to-equip builders, comparison charts and saved toolkit replace the v0.1 interface. See [v0.2 media/data notes](docs/MEDIA-v0.2.md) and [release verification](docs/verification/v0.2.0/browser-results.json).
+> **Current release: v0.2.1.** The image-based workspace, sourced catalog, click-to-equip builders, comparison charts and saved toolkit replace the v0.1 interface. See [v0.2 media/data notes](docs/MEDIA-v0.2.md) and [release verification](docs/verification/v0.2.0/browser-results.json).
 
 # GamePulse Tools · v0.1.0
 

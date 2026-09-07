@@ -74,12 +74,6 @@ export function SiteHeader() {
           <kbd>⌘ K</kbd>
         </button>
         <div className="header-actions">
-          <a
-            className="version"
-            href={`${siteConfig.github}/releases/tag/v${siteConfig.version}`}
-          >
-            v{siteConfig.version}
-          </a>
           <Link href="/library" className="library-button">
             <Bookmark size={16} />
             <span>My toolkit</span>

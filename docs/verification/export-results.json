@@ -2,7 +2,7 @@
   "htmlPages": 69,
   "localReferencesChecked": 4200,
   "homeInitialScripts": 9,
-  "homeInitialJavascriptGzipBytes": 187922,
+  "homeInitialJavascriptGzipBytes": 187898,
   "adminExported": false,
   "note": "Measured local export size; not a real-user Core Web Vitals measurement."
 }
