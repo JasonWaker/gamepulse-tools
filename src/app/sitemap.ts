@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { games, tools, toolHref } from "@/lib/registry";
+import { games, tools, toolHref, entities } from "@/lib/registry";
 import { siteConfig } from "@/lib/config";
 export const dynamic = "force-static";
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -12,6 +12,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/privacy",
     ...games.flatMap((g) => [`/games/${g.slug}`, `/games/${g.slug}/tools`]),
     ...tools.map(toolHref),
+    "/games/wardogs/database",
+    "/games/wardogs/weapons",
+    "/games/wardogs/equipment",
+    ...entities
+      .filter((e) => e.entity_type === "weapons")
+      .map((e) => `/games/${e.game_id}/${e.entity_type}/${e.slug}`),
     "/games/aniimo/database",
     "/games/aniimo/creatures",
   ].map((path) => ({

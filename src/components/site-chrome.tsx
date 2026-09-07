@@ -2,24 +2,37 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import { Activity, Search, X, ArrowUpRight, Menu } from "lucide-react";
+import {
+  Activity,
+  Search,
+  X,
+  ArrowUpRight,
+  Menu,
+  LayoutGrid,
+  Crosshair,
+  Bookmark,
+  ChevronRight,
+  Database,
+  Info,
+} from "lucide-react";
 import { siteConfig } from "@/lib/config";
-import { games, tools, toolHref } from "@/lib/registry";
+import { games, tools, entities, toolHref, gameTools } from "@/lib/registry";
+import { Cover } from "./catalog-art";
 export function SiteHeader() {
-  const pathname = usePathname();
-  const [open, setOpen] = useState(false);
-  const [query, setQuery] = useState("");
-  const [menu, setMenu] = useState(false);
+  const path = usePathname();
+  const [open, setOpen] = useState(false),
+    [menu, setMenu] = useState(false),
+    [query, setQuery] = useState("");
   const dialog = useRef<HTMLDialogElement>(null);
   useEffect(() => {
-    const handler = (e: KeyboardEvent) => {
+    const fn = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
         e.preventDefault();
         setOpen(true);
       }
     };
-    window.addEventListener("keydown", handler);
-    return () => window.removeEventListener("keydown", handler);
+    window.addEventListener("keydown", fn);
+    return () => window.removeEventListener("keydown", fn);
   }, []);
   useEffect(() => {
     if (open) dialog.current?.showModal();
@@ -32,60 +45,140 @@ export function SiteHeader() {
       kind: "Game hub",
     })),
     ...tools.map((t) => ({ name: t.name, href: toolHref(t), kind: t.game_id })),
-  ].filter((x) =>
-    (x.name + x.kind).toLowerCase().includes(query.toLowerCase()),
-  );
+    ...entities.map((e) => ({
+      name: e.name,
+      href: `/games/${e.game_id}/${e.entity_type}/${e.slug}`,
+      kind: String(e.data_json.category || e.data_json.type),
+    })),
+  ]
+    .filter((x) =>
+      (x.name + " " + x.kind).toLowerCase().includes(query.toLowerCase()),
+    )
+    .slice(0, 24);
   return (
     <>
       <header className="site-header">
-        <Link href="/" className="brand" aria-label={siteConfig.name}>
+        <Link href="/" className="brand" aria-label="GamePulse Tools">
           <Activity />
           <span>
-            {siteConfig.shortName}
-            <small>TOOLS</small>
+            GAMEPULSE<small>THE PLAYER’S TOOLKIT</small>
           </span>
         </Link>
-        <nav
-          className={menu ? "main-nav expanded" : "main-nav"}
-          aria-label="Main navigation"
+        <button
+          className="search-button"
+          onClick={() => setOpen(true)}
+          aria-label="Search games, equipment and tools"
         >
-          <Link
-            onClick={() => setMenu(false)}
-            className={pathname === "/games/" ? "active" : ""}
-            href="/games"
-          >
-            Discover games
-          </Link>
-          <Link onClick={() => setMenu(false)} href="/tools">
-            All tools
-          </Link>
-          <Link onClick={() => setMenu(false)} href="/trending">
-            On our radar <span className="tiny-dot" />
-          </Link>
-        </nav>
+          <Search size={18} />
+          <span>Search games, equipment, tools…</span>
+          <kbd>⌘ K</kbd>
+        </button>
         <div className="header-actions">
-          <button
-            className="search-button"
-            onClick={() => setOpen(true)}
-            aria-label="Search games and tools"
+          <a
+            className="version"
+            href={`${siteConfig.github}/releases/tag/v${siteConfig.version}`}
           >
-            <Search size={16} />
-            <span>Search anything</span>
-            <kbd>⌘ K</kbd>
-          </button>
-          <a className="version" href={`${siteConfig.github}/releases`}>
             v{siteConfig.version}
           </a>
+          <Link href="/library" className="library-button">
+            <Bookmark size={16} />
+            <span>My toolkit</span>
+          </Link>
           <button
             className="mobile-menu"
+            onClick={() => setMenu(!menu)}
             aria-label="Toggle navigation"
             aria-expanded={menu}
-            onClick={() => setMenu(!menu)}
           >
             <Menu />
           </button>
         </div>
       </header>
+      <aside className={`app-sidebar ${menu ? "is-open" : ""}`}>
+        <nav aria-label="Main navigation">
+          <small className="nav-label">WORKSPACE</small>
+          {[
+            { href: "/", label: "Overview", icon: LayoutGrid },
+            { href: "/tools", label: "All tools", icon: Crosshair },
+            { href: "/library", label: "My toolkit", icon: Bookmark },
+          ].map((x) => (
+            <Link
+              key={x.href}
+              href={x.href}
+              onClick={() => setMenu(false)}
+              className={
+                path === x.href || path === x.href + "/" ? "selected" : ""
+              }
+            >
+              <x.icon size={18} />
+              {x.label}
+            </Link>
+          ))}
+          <small className="nav-label">
+            YOUR GAMES <span>03</span>
+          </small>
+          {games.map((g) => (
+            <div key={g.id} className="nav-game">
+              <Link
+                href={`/games/${g.slug}`}
+                className={path.includes("/" + g.slug) ? "selected" : ""}
+                onClick={() => setMenu(false)}
+              >
+                <Cover game={g.id} />
+                <span>
+                  {g.name}
+                  <small>{g.platforms[0]}</small>
+                </span>
+                <ChevronRight size={13} />
+              </Link>
+              {path.includes("/" + g.slug) && (
+                <div className="nav-game-tools">
+                  {gameTools(g.id).map((t) => (
+                    <Link
+                      key={t.id}
+                      href={toolHref(t)}
+                      onClick={() => setMenu(false)}
+                      className={path.includes(t.slug) ? "selected" : ""}
+                    >
+                      {t.name}
+                    </Link>
+                  ))}
+                  {entities.some((e) => e.game_id === g.id) && (
+                    <Link
+                      href={`/games/${g.slug}/database`}
+                      onClick={() => setMenu(false)}
+                    >
+                      <Database size={13} />
+                      Database
+                    </Link>
+                  )}
+                </div>
+              )}
+            </div>
+          ))}
+        </nav>
+        <div className="sidebar-bottom">
+          <div className="release-note">
+            <span className="pulse-dot" /> THE TOOLKIT UPDATE
+            <strong>Less setup. More playing.</strong>
+            <span>Equipment, presets & saved plans.</span>
+            <a href={`${siteConfig.github}/releases`}>
+              What’s new in v{siteConfig.version} ↗
+            </a>
+          </div>
+          <Link href="/about">
+            <Info size={15} /> About & sources
+          </Link>
+          <Link href="/privacy">Privacy policy</Link>
+        </div>
+      </aside>
+      {menu && (
+        <button
+          aria-label="Close navigation"
+          className="sidebar-backdrop"
+          onClick={() => setMenu(false)}
+        />
+      )}
       <dialog
         ref={dialog}
         onCancel={() => setOpen(false)}
@@ -94,15 +187,14 @@ export function SiteHeader() {
         <div className="row">
           <Search />
           <input
-            autoFocus
-            aria-label="Search games and tools"
-            placeholder="Find your game or tool…"
+            aria-label="Search catalog"
+            placeholder="Try AK74, Fire, or team…"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
           <button
-            className="icon-button"
             aria-label="Close search"
+            className="icon-button"
             onClick={() => setOpen(false)}
           >
             <X />
@@ -118,7 +210,7 @@ export function SiteHeader() {
               <ArrowUpRight size={18} />
             </Link>
           ))}
-          {!results.length && <p>No matches. Try a game name or “planner”.</p>}
+          {!results.length && <p>No matches. Try a weapon name or element.</p>}
         </div>
       </dialog>
     </>
@@ -128,30 +220,15 @@ export function SiteFooter() {
   return (
     <footer className="site-footer">
       <div>
-        <Link href="/" className="brand">
-          <Activity />
-          <span>
-            {siteConfig.shortName}
-            <small>TOOLS</small>
-          </span>
-        </Link>
-        <p>Get ahead. Play your way.</p>
+        <strong>
+          GAMEPULSE <span className="muted">/ PLAYER TOOLS</span>
+        </strong>
+        <p>Independent companion. Game trademarks belong to their owners.</p>
       </div>
       <div className="footer-links">
-        <Link href="/about">About & data policy</Link>
-        <Link href="/privacy">Privacy</Link>
+        <Link href="/about">Sources & artwork</Link>
         <a href={siteConfig.github}>GitHub ↗</a>
-      </div>
-      <div className="footer-note">
-        <span>
-          Unofficial fan-made companion tools.
-          <br />
-          Game names, logos and related assets belong to their respective
-          owners.
-        </span>
-        <span>
-          © 2026 {siteConfig.shortName} · v{siteConfig.version}
-        </span>
+        <span>v{siteConfig.version}</span>
       </div>
     </footer>
   );

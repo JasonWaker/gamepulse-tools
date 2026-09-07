@@ -1,3 +1,4 @@
+import { Catalog } from "@/components/player-tools";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -65,7 +66,7 @@ export default async function Page({
           ? "Only verified, active codes belong here. No invented rewards."
           : section === "guides"
             ? "Practical help, when there is enough verified information to be useful."
-            : "A growing collection of official records. Missing stats are clearly marked."}
+            : "Search, filter and bookmark sourced records. Pick an entry to inspect it or add it directly to your plan."}
       </p>
       {section === "database" && (
         <nav className="tool-dock">
@@ -93,20 +94,7 @@ export default async function Page({
               }),
             }}
           />
-          <div className="entity-grid">
-            {es.map((e) => (
-              <Link
-                key={e.id}
-                className="entity-card"
-                href={`/games/${g.slug}/${e.entity_type}/${e.slug}`}
-              >
-                <small>NO. {String(e.data_json.index).padStart(3, "0")}</small>
-                <div className="creature-symbol">✧</div>
-                <h3>{e.name}</h3>
-                <p>Official index · Combat stats pending</p>
-              </Link>
-            ))}
-          </div>
+          <Catalog records={es} />
         </>
       ) : (
         <EmptyState

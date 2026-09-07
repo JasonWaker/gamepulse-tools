@@ -27,9 +27,11 @@ export default function Page() {
       </p>
       <h2>Media rights register</h2>
       <p>
-        The launch artwork is original CSS and SVG. It evokes each game genre
-        without copying game characters, screenshots or logos. Publicly
-        accessible official images are not automatically cleared for reuse.
+        WARDOGS cover images come from Team17’s official Press & Creator Hub.
+        Equipment illustrations, element emblems and the adventure landscape are
+        original generated artwork, not game models or character portraits.
+        Roblox thumbnails remain externally hosted. Every displayed asset has a
+        recorded source and usage basis.
       </p>
       {media.map((m) => (
         <div className="policy-record" key={m.id}>

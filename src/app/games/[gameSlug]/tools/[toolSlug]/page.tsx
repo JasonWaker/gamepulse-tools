@@ -47,11 +47,11 @@ export default async function Page({
   const faq = [
     {
       q: "Are these official game stats?",
-      a: "No. Calculations use your own inputs. Aniimo names come from the official index; unverified combat stats and interactions are not displayed.",
+      a: "WARDOGS records are community-reported Closed Alpha/Beta data and can change at launch. Aniimo types and roles come from its official index. Personal progress estimates use your own observations.",
     },
     {
       q: "Can I save or share my plan?",
-      a: "Save plan stores it in this browser. Share copies a URL containing your inputs. Anyone with that link can read the plan.",
+      a: "Save plan stores it in this browser. All five tools support named copies in My toolkit. Share copies a URL containing your plan.",
     },
     {
       q: "Does this tool work on mobile?",
@@ -116,11 +116,12 @@ export default async function Page({
       <div className="tool-details">
         <section>
           <small className="overline">HOW IT WORKS</small>
-          <h2>A plan built around your inputs.</h2>
+          <h2>From discovery to a saved plan.</h2>
           <p>
-            Start with the values from your own game session, adjust your
-            choices, and see the results update immediately. Save a plan locally
-            or share a link when you are ready.
+            Choose records from the catalog, adjust your choices, and see the
+            results update immediately. Budget tools include purchase and
+            standard ammunition costs. Progress tools use your personal
+            observations.
           </p>
           <p>
             Personal estimates are not official game recommendations. Missing

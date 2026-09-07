@@ -1,3 +1,4 @@
+import { Catalog } from "@/components/player-tools";
 import Link from "next/link";
 import { ArrowUpRight, Database } from "lucide-react";
 import {
@@ -14,7 +15,6 @@ import {
   Badge,
   ToolCard,
   SectionTitle,
-  EmptyState,
   AdSlot,
 } from "@/components/shared";
 import { siteConfig } from "@/lib/config";
@@ -60,12 +60,14 @@ export default async function Page({
             <Link className="button primary" href={toolHref(ts[0])}>
               Open {ts[0].name} <ArrowUpRight size={18} />
             </Link>
-            <Link
-              className="button secondary"
-              href={`/games/${g.slug}/database`}
-            >
-              View database
-            </Link>
+            {es.length > 0 && (
+              <Link
+                className="button secondary"
+                href={`/games/${g.slug}/database`}
+              >
+                View database
+              </Link>
+            )}
           </div>
           <div className="hero-proof">
             <span>{g.platforms.join(" · ")}</span>
@@ -81,10 +83,11 @@ export default async function Page({
             <ArrowUpRight size={15} />
           </Link>
         ))}
-        <Link href={`/games/${g.slug}/database`}>
-          <Database size={16} /> Database
-        </Link>
-        <Link href={`/games/${g.slug}/codes`}>Codes</Link>
+        {es.length > 0 && (
+          <Link href={`/games/${g.slug}/database`}>
+            <Database size={16} /> Database
+          </Link>
+        )}
       </nav>
       <section className="section">
         <SectionTitle
@@ -101,26 +104,22 @@ export default async function Page({
       <section className="section">
         <SectionTitle
           eyebrow="KNOW YOUR GAME"
-          title="The database."
-          href={`/games/${g.slug}/database`}
+          title={es.length ? "Explore the database" : "Your personal workspace"}
+          href={es.length ? `/games/${g.slug}/database` : toolHref(ts[0])}
         />
         {es.length ? (
-          <div className="entity-grid">
-            {es.slice(0, 4).map((e) => (
-              <Link
-                className="entity-card"
-                key={e.id}
-                href={`/games/${g.slug}/${e.entity_type}/${e.slug}`}
-              >
-                <small>NO. {String(e.data_json.index).padStart(3, "0")}</small>
-                <div className="creature-symbol">✧</div>
-                <h3>{e.name}</h3>
-                <p>Official index · Stats pending</p>
-              </Link>
-            ))}
-          </div>
+          <Catalog records={es.slice(0, 6)} />
         ) : (
-          <EmptyState description="Official stats are being verified. In the meantime, the calculators work with your own inputs." />
+          <div className="panel">
+            <h2>Keep a record of every session.</h2>
+            <p>
+              Set personal milestones, log checkpoints, and compare time
+              estimates using your observed resource rate.
+            </p>
+            <Link className="button primary" href={toolHref(ts[0])}>
+              Open your progress workspace ↗
+            </Link>
+          </div>
         )}
       </section>
       <section className="media-section">
@@ -140,8 +139,9 @@ export default async function Page({
       </section>
       <p className="source-note">
         Source: <a href={g.source_url}>{g.developer}</a> · Checked{" "}
-        {g.verified_at} · {g.game_version}. Artwork on this hub is an original
-        abstract illustration, not game footage.
+        {g.verified_at} · {g.game_version}. WARDOGS media © BULKHEAD / Team17,
+        from the official press kit. Aniimo cover is an original adventure
+        illustration. Roblox thumbnail is hosted by Roblox.
       </p>
     </div>
   );

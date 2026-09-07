@@ -18,8 +18,8 @@ test("schema executes; RLS hides drafts and unapproved media, blocks public muta
   await db.exec("set role anon");
   assert.equal((await db.query("select * from games")).rows.length, 3);
   assert.equal((await db.query("select * from tools")).rows.length, 5);
-  assert.equal((await db.query("select * from game_media")).rows.length, 3);
-  assert.equal((await db.query("select * from game_entities")).rows.length, 8);
+  assert.equal((await db.query("select * from game_media")).rows.length, 11);
+  assert.equal((await db.query("select * from game_entities")).rows.length, 34);
   await assert.rejects(() => db.exec("update games set name='hacked'"));
   await assert.rejects(() => db.query("select * from tool_events"));
   await db.exec("reset role");

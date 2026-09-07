@@ -1,3 +1,4 @@
+import catalog from "@/data/catalog.json";
 export type Theme = {
   primary_color: string;
   secondary_color: string;
@@ -67,7 +68,7 @@ export const games: Game[] = [
     release_date: "2026-09-10",
     steam_app_id: 1867240,
     official_url: "https://bulkhead.com/games/wardogs/",
-    entityTypes: ["weapons", "vehicles"],
+    entityTypes: ["weapons", "equipment"],
     trend_score: null,
     opportunity_score: null,
     growth_status: "Editorial watchlist",
@@ -161,7 +162,7 @@ export const tools: ToolDefinition[] = [
     short_description:
       "Build your kit. Balance your budget. Deploy with a plan.",
     status: "NEW",
-    version: "0.1.0",
+    version: "0.2.0",
     is_featured: true,
     config_json: {
       slots: ["Primary weapon", "Secondary", "Utility", "Armor", "Vehicle"],
@@ -177,7 +178,7 @@ export const tools: ToolDefinition[] = [
     short_description:
       "Compare your weapon stats side by side, before you commit.",
     status: "NEW",
-    version: "0.1.0",
+    version: "0.2.0",
     is_featured: true,
     config_json: {},
     updated_at: "2026-09-07",
@@ -191,7 +192,7 @@ export const tools: ToolDefinition[] = [
     short_description:
       "Four slots. Endless possibilities. Pick your adventure crew.",
     status: "NEW",
-    version: "0.1.0",
+    version: "0.2.0",
     is_featured: true,
     config_json: { slots: 4 },
     updated_at: "2026-09-07",
@@ -205,7 +206,7 @@ export const tools: ToolDefinition[] = [
     short_description:
       "Track your stats and choose your next personal milestone.",
     status: "NEW",
-    version: "0.1.0",
+    version: "0.2.0",
     is_featured: true,
     config_json: { stats: ["Height", "Face", "Frame", "Bodyfat"] },
     updated_at: "2026-09-07",
@@ -219,7 +220,7 @@ export const tools: ToolDefinition[] = [
     short_description:
       "See what a boost could save, using your observed rates.",
     status: "NEW",
-    version: "0.1.0",
+    version: "0.2.0",
     is_featured: false,
     config_json: {},
     updated_at: "2026-09-07",
@@ -231,33 +232,13 @@ export type Entity = {
   entity_type: string;
   slug: string;
   name: string;
-  data_json: Record<string, string | number | null>;
+  data_json: Record<string, string | number | null | undefined>;
   source_url: string;
   verified_at: string;
   game_version: string;
   description: string;
 };
-export const entities: Entity[] = [
-  "Emberpup",
-  "Flameruff",
-  "Scorchhowl",
-  "Inferlupa",
-  "Celestis",
-  "Stellarys",
-  "Chirpi",
-  "Tromber",
-].map((name, i) => ({
-  id: `aniimo-${i + 1}`,
-  game_id: "aniimo",
-  entity_type: "creatures",
-  slug: name.toLowerCase(),
-  name,
-  data_json: { index: i + 1, type: null, skills: null },
-  source_url: "https://wiki.aniimo.com/",
-  verified_at: "2026-09-07",
-  game_version: "Official pre-release index",
-  description: `${name} is listed as No. ${String(i + 1).padStart(3, "0")} in the official Aniimo index. Add this companion to your planning roster. Combat details are awaiting verification.`,
-}));
+export const entities: Entity[] = catalog;
 export const getGame = (slug: string) => games.find((g) => g.slug === slug);
 export const gameTools = (id: string) => tools.filter((t) => t.game_id === id);
 export const gameEntities = (id: string, type?: string) =>
@@ -277,7 +258,10 @@ export const gameMediaSources = Object.fromEntries(
       official_youtube: null,
       official_x: null,
       official_discord: null,
-      press_kit_url: null,
+      press_kit_url:
+        game.id === "wardogs"
+          ? "https://www.team17.com/hubfs/WARDOGS%20-%20Press%20Kit%20(Aug%2026).zip"
+          : null,
       roblox_url: game.roblox_place_id
         ? `https://www.roblox.com/games/${game.roblox_place_id}/`
         : null,
